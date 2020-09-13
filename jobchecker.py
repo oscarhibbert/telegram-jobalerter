@@ -1,3 +1,8 @@
+# Load & print datetime
+from datetime import datetime
+print('\nScript started @ ' + 
+str(datetime.now()) + '\n')
+
 # Load credentials & other env data
 from dotenv import load_dotenv
 import os
