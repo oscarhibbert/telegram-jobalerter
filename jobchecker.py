@@ -15,7 +15,9 @@ airtable_rawapi_table_jobpageurls = os.environ.get(
     'AIRTABLE_RAWAPI_TABLE_JOBPAGEURLS')
 
 telegram_apikey = os.environ.get('TELEGRAM_APIKEY')
-telegram_chatid_oscar = os.environ.get('TELEGRAM_CHATID_OSCAR')
+telegram_chatid = os.environ.get('TELEGRAM_CHATID')
+
+search_term = os.environ.get('SEARCH_TERM')
 
 # Load all modules
 import checkpage.checkhtml as checkhtml
@@ -24,7 +26,7 @@ import records.updaterecords as updaterecords
 import telegram.telegrammessage as telegram
 
 # Load compare records function.
-# Takes two inputs. First is the original data, and second
+# Takes two arguments. First is the original data, and second
 # is the new data. Returns records ready for a PATCH call
 def comparerecords(origdata,newdata):
     # Original data and new data
@@ -89,36 +91,36 @@ inputdata = getrecords.getcleandata(airtable_apikey,
     airtable_base_startups, airtable_wrapper_table_jobpageurls)
 
 
-# Takes records pulled from Airtable as an input
+# Takes records pulled from Airtable as an argument
 # Checks whether any HTML elements on the page
-# contain the text "Product Manager"
+# contain the search term
 # returns record including boolean True or False
 # as well as a count of no. of instances appended 
 # to the record
-print('\nChecking each URL for no. of times "Product Manager"',
+print('\nChecking each URL for no. of times', '"'+search_term+'"',
 'appears and appending to each record...\n')
-containstextpm = checkhtml.checkforpm(inputdata)
+termcount = checkhtml.checkforterm(inputdata,search_term)
 
 
-# Runs the compare records function taking the two inputs
+# Runs the compare records function taking the two arguments
 # as above
 print('\nComparing original records with new records',
       'checking initiated...\n')
-recordsforpatch = comparerecords(inputdata,containstextpm)
+recordsforpatch = comparerecords(inputdata,termcount)
 
 
 # Makes a PATCH request to Airtable taking a list 
-# of records as an input
+# of records as an argument
 print('\nInitiating patch request...\n')
 updaterecords.patch(airtable_apikey,airtable_base_startups,
     airtable_rawapi_table_jobpageurls,
     recordsforpatch['patchdata'])
 
 
-# Sends messages to Telegram Chat ID
-# writes a message with the co name and jobs page URL
-# for each co - takes one argument - companies
+# Sends messages to specified Telegram Chat ID
+# sends a message with the co name and jobs page URL
+# for each co - takes the argument - companies
 print('\nSending messages via Telegram...\n')
 telegram.send_message(telegram_apikey,
-    telegram_chatid_oscar,recordsforpatch['telegramdata'])
+    telegram_chatid,recordsforpatch['telegramdata'],search_term)
         

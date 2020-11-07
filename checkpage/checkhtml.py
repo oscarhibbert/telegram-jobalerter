@@ -1,5 +1,5 @@
 # This script will check whether the page contains any HTML element
-# That contains the words "Product Manager"
+# That contains the search term located in the environment variable file
 import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -9,15 +9,14 @@ from selenium.webdriver.common.keys import Keys
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certificate-errors')
-# options.add_argument("user-data-dir=./chrome/ozzycookies")
 # options.add_argument('--headless')
 # options.add_argument('--disable-gpu')
 
-# Browser variable setting the browser driver and utilising options as above. * Note the path needs to be modified depending where
-# ...this script is run from
+# Browser variable setting the browser driver
+# downloaded & installed via webdriver manager
 browser = webdriver.Chrome(ChromeDriverManager().install())
 
-def checkforpm(records):
+def checkforterm(records,search_term):
     data = []
     
     for record in records:
@@ -36,17 +35,17 @@ def checkforpm(records):
 
         browser.get(record_joburl)
         time.sleep(1)
-        elements = browser.find_elements_by_xpath('//*[text()[contains(.,"Product Manager")]]')
+        elements = browser.find_elements_by_xpath('//*[text()[contains(.,"%s")]]' % search_term)
         
         if not elements:
             print('Jobs page for co.', record_coname, 
-                    'No HTML element(s) containing the text "Product Manager" found.')
+                    'No HTML element(s) containing the text', '"'+search_term+'"', 'found.')
             result['containspmcount'] = 0
             result['containspm'] = False
         else:
             print('Jobs page for co.', record_coname,
                 str(len(elements)), 'HTML elements containing the text',
-                '"Product Manager" found.')
+                '"'+search_term+'"', 'found.')
             result['containspmcount'] = len(elements)
             result['containspm'] = True
         data.append(result)
