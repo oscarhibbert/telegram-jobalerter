@@ -2,6 +2,7 @@
 # That contains the words "Product Manager"
 import time
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 
 # Chrome webdriver SSL disabling options
@@ -14,7 +15,7 @@ options.add_argument('--ignore-certificate-errors')
 
 # Browser variable setting the browser driver and utilising options as above. * Note the path needs to be modified depending where
 # ...this script is run from
-browser = webdriver.Chrome(executable_path='./chrome/chromedriver',options=options)
+browser = webdriver.Chrome(ChromeDriverManager().install())
 
 def checkforpm(records):
     data = []

@@ -11,6 +11,7 @@ airtable-python-wrapper = "*"
 pytelegrambotapi = "*"
 selenium = "*"
 python-dotenv = "*"
+webdriver-manager = "*"
 
 [requires]
 python_version = "3.7"
