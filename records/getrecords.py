@@ -11,13 +11,18 @@ def getcleandata(apikey,base,table):
 
     # print(raw_records)
     for record in raw_records:
-        data = {
-            'recordid': record['id'],
-            'coname': record['fields']['Startup Name (from Startups)'][0],
-            'jobsurl': record['fields']['Jobs Page URL'],
-            'pmtextcount': record['fields']['Product Manager Text Count']
-        }
-        clean_records.append(data)
+        try:
+            data = {
+                'recordid': record['id'],
+                'coname': record['fields']['Startup Name (from Startups)'][0],
+                'jobsurl': record['fields']['Jobs Page URL'],
+                'pmtextcount': record['fields']['Product Manager Text Count']
+            }
+            clean_records.append(data)
+        except KeyError:
+            print('A KeyError has ocurred. A mapping key is empty for the',
+                  'record with Startup Name:', 
+                  record['fields']['Startup Name (from Startups)'][0]+'.')
 
     return clean_records
 
