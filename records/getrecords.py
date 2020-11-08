@@ -20,8 +20,8 @@ def getcleandata(apikey,base,table):
             }
             clean_records.append(data)
         except KeyError:
-            print('A KeyError has ocurred. A mapping key is empty for the',
-                  'record with Startup Name:', 
+            print('A KeyError has ocurred. A mapping key value is empty for',
+                  'the record with Startup Name:', 
                   record['fields']['Startup Name (from Startups)'][0]+'.')
 
     return clean_records
