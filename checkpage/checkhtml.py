@@ -1,5 +1,5 @@
-# This script will check whether the page contains any HTML element
-# That contains the search term located in the environment variable file
+# This application will check whether the page contains any HTML elements
+# that contain the search term located in the environment variable file
 import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -16,7 +16,7 @@ options.add_argument('--ignore-certificate-errors')
 # downloaded & installed via webdriver manager
 browser = webdriver.Chrome(ChromeDriverManager().install())
 
-def checkforterm(records,search_term):
+def checkforterm(records,xpath_selector,search_term):
     data = []
     
     for record in records:
@@ -35,11 +35,13 @@ def checkforterm(records,search_term):
 
         browser.get(record_joburl)
         time.sleep(1)
-        elements = browser.find_elements_by_xpath('//*[text()[contains(.,"%s")]]' % search_term)
-        
+        elements = browser.find_elements_by_xpath(
+            xpath_selector % search_term)
+
         if not elements:
             print('Jobs page for co.', record_coname, 
-                    'No HTML element(s) containing the text', '"'+search_term+'"', 'found.')
+                    'No HTML element(s) containing the text', 
+                    '"'+search_term+'"', 'found.')
             result['containspmcount'] = 0
             result['containspm'] = False
         else:
