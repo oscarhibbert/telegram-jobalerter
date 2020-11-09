@@ -6,6 +6,8 @@ Company careers page URLs to monitor are managed in Airtable & checked by the ap
 
 The application then sends an alert for any new vacancies to a private Telegram channel when detected.
 
+![Job Alerter on Telegram](https://images.squarespace-cdn.com/content/v1/5f68900ab0847f6b53d3b288/1604941542581-WOSM3QQ49L89R8TJZO94/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/job-alerter-app.jpg?format=750w)
+
 ## Installation
 
 This application is tested with Python 3.7.
@@ -64,16 +66,16 @@ SEARCH_TERM = ''
 ```
 
 
-## Run the Application
+## Running the Application
 
 From the app directory ```$ pipenv run python3 jobchecker.py```
 
 
 ## Limitations
 
-* No handling for career pages which have CAPATCHA walls.
+* No handling for pages which have CAPATCHA walls.
 
-* Currently limited to monitoring a maximum of ten Airtable records.
+* Currently limited to monitoring a maximum of 10 Airtable records.
 
 
 ## Final Note
