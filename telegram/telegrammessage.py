@@ -10,7 +10,7 @@ def send_message(apikey,chatid,data,search_term):
         co_name = company['coname']
         co_joburl = company['jobspage']
         message = (f'<b>{co_name}</b> has a ' +
-        f'<u><a href="{co_joburl}">New {search_term}</a></u> role!')
+        f'<u><a href="{co_joburl}">New {search_term}</a></u> vacancy!')
         print('Sending Telegram message ' +
         f'for {co_name} with jobs page URL: {co_joburl}')
         bot.send_message(chatid,message,parse_mode='HTML')

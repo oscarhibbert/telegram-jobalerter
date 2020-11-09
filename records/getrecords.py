@@ -1,10 +1,10 @@
 from airtable import Airtable
 
-def getcleandata(apikey,base,table,view):
+def getcleandata(apikey,base,table,view,field_coname,field_jobsurl,
+    field_searchcount):
+
     # Load Airtable class and pass args
     airtable = Airtable(base, table, api_key=apikey)
-
-    # records = airtable.get_all(view='Shortlist', fields=['Startup Name','Jobs Page URL'])
     raw_records = airtable.get_all(view=view)
     clean_records = []
 
@@ -13,15 +13,17 @@ def getcleandata(apikey,base,table,view):
         try:
             data = {
                 'recordid': record['id'],
-                'coname': record['fields']['Startup Name (from Startups)'][0],
-                'jobsurl': record['fields']['Jobs Page URL'],
-                'pmtextcount': record['fields']['Product Manager Text Count']
+                'coname': record['fields'][field_coname][0],
+                'jobsurl': record['fields'][field_jobsurl],
+                'searchcount': record['fields'][field_searchcount]
             }
             clean_records.append(data)
         except KeyError:
-            print('A KeyError has ocurred. A mapping key value is empty for',
-                  'the record with Startup Name:', 
-                  record['fields']['Startup Name (from Startups)'][0]+'.')
+            print(
+                'A KeyError has ocurred. Skipping record.',
+                'A mapping key is empty for the record with Company Name:', 
+                record['fields'][field_coname][0]+'.'
+                )
 
     return clean_records
 

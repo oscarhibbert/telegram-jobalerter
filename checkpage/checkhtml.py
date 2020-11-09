@@ -29,8 +29,8 @@ def checkforterm(records,xpath_selector,search_term):
             'recordid': record_id,
             'coname': record_coname,
             'jobsurl': record_joburl,
-            'containspmcount': '',
-            'containspm' : ''
+            'searchcount': '',
+            'searchfound' : ''
         }
 
         browser.get(record_joburl)
@@ -42,14 +42,14 @@ def checkforterm(records,xpath_selector,search_term):
             print('Jobs page for co.', record_coname, 
                     'No HTML element(s) containing the text', 
                     '"'+search_term+'"', 'found.')
-            result['containspmcount'] = 0
-            result['containspm'] = False
+            result['searchcount'] = 0
+            result['searchfound'] = False
         else:
             print('Jobs page for co.', record_coname,
                 str(len(elements)), 'HTML elements containing the text',
                 '"'+search_term+'"', 'found.')
-            result['containspmcount'] = len(elements)
-            result['containspm'] = True
+            result['searchcount'] = len(elements)
+            result['searchfound'] = True
         data.append(result)
     print('Selenium headless Chrome browser now closing.')
     browser.quit()
