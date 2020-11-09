@@ -14,18 +14,18 @@ This application is tested with Python 3.7.
 
 2. Navigate to the app directory ```$ cd jobalerter-app```
 
-3. Install all deps using pipenv ```$ cd pipenv install```
+3. Install all dependencies using pipenv ```$ cd pipenv install```
 
 
 ## Configuration
 
-1. Create a free Airtable account [here](https://airtable.com/signup)
+1. Create a free Airtable account [here](https://airtable.com/signup).
 
-2. Create a new base, table & view. See [here](https://support.airtable.com/hc/en-us/articles/360021518753-Getting-started-starting-with-the-base-ics). * See below for field information. **Special attention to search count field**.
+2. Create a new Airtable base, table & view. See [here](https://support.airtable.com/hc/en-us/articles/360021518753-Getting-started-starting-with-the-base-ics). * See below for field information. **Special attention to search count field**.
 
 3. Create a Telegram bot. See [here](https://sarafian.github.io/low-code/2020/03/24/create-private-telegram-chatbot.html). * No need to read further than 'disable joining groups'.
 
-4. Create an environment variable file in the application directory with the following config:
+4. Create an environment variable ```.env``` file in the application directory with the following config:
 
 ```
 # 1. Airtable connection & base configuration
@@ -64,4 +64,19 @@ SEARCH_TERM = ''
 ```
 
 
+## Run the Application
+
+From the app directory ```$ pipenv run python3 jobchecker.py```
+
+
 ## Limitations
+
+* No handling for career pages which have CAPATCHA walls.
+
+* Currently limited to monitoring a maximum of ten Airtable records.
+
+
+## Final Note
+
+This app works great when run in the background by [launchd](https://www.launchd.info/) the process used by MacOS to manage  daemons and agents.
+
