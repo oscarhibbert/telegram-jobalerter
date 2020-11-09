@@ -1,12 +1,11 @@
 from airtable import Airtable
 
-def getcleandata(apikey,base,table):
+def getcleandata(apikey,base,table,view):
     # Load Airtable class and pass args
-    airtable = Airtable(base, table,
-                        api_key=apikey)
+    airtable = Airtable(base, table, api_key=apikey)
 
     # records = airtable.get_all(view='Shortlist', fields=['Startup Name','Jobs Page URL'])
-    raw_records = airtable.get_all(view='Shortlist')
+    raw_records = airtable.get_all(view=view)
     clean_records = []
 
     # print(raw_records)

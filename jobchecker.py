@@ -8,11 +8,9 @@ from dotenv import load_dotenv
 import os
 
 airtable_apikey = os.environ.get('AIRTABLE_APIKEY')
-airtable_base_startups = os.environ.get('AIRTABLE_BASE_STARTUPS')
-airtable_wrapper_table_jobpageurls = os.environ.get(
-    'AIRTABLE_WRAPPER_TABLE_JOBPAGEURLS')
-airtable_rawapi_table_jobpageurls = os.environ.get(
-    'AIRTABLE_RAWAPI_TABLE_JOBPAGEURLS')
+airtable_base = os.environ.get('AIRTABLE_BASE')
+airtable_table = os.environ.get('AIRTABLE_TABLE')
+airtable_view = os.environ.get('AIRTABLE_VIEW')
 
 telegram_apikey = os.environ.get('TELEGRAM_APIKEY')
 telegram_chatid = os.environ.get('TELEGRAM_CHATID')
@@ -89,7 +87,7 @@ def comparerecords(origdata,newdata):
 # Startups Base
 print('\nGetting job page URL records from Airtable...\n')
 inputdata = getrecords.getcleandata(airtable_apikey, 
-    airtable_base_startups, airtable_wrapper_table_jobpageurls)
+    airtable_base, airtable_table, airtable_view)
 
 
 # Takes records pulled from Airtable as an argument
@@ -113,8 +111,8 @@ recordsforpatch = comparerecords(inputdata,termcount)
 # Makes a PATCH request to Airtable taking a list 
 # of records as an argument
 print('\nInitiating patch request...\n')
-updaterecords.patch(airtable_apikey,airtable_base_startups,
-    airtable_rawapi_table_jobpageurls,
+updaterecords.patch(airtable_apikey,airtable_base,
+    airtable_table,
     recordsforpatch['patchdata'])
 
 
