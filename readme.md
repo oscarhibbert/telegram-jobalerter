@@ -21,7 +21,7 @@ This application is tested with Python 3.7.
 
 1. Create a free Airtable account [here](https://airtable.com/signup)
 
-2. Create a new base, table & view. See [here](https://support.airtable.com/hc/en-us/articles/360021518753-Getting-started-starting-with-the-base-ics). * Special attention to search count field below. 
+2. Create a new base, table & view. See [here](https://support.airtable.com/hc/en-us/articles/360021518753-Getting-started-starting-with-the-base-ics). * See below for field information. **Special attention to search count field**.
 
 3. Create a Telegram bot. See [here](https://sarafian.github.io/low-code/2020/03/24/create-private-telegram-chatbot.html). * No need to read further than 'disable joining groups'.
 
