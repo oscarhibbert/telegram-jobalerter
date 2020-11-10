@@ -19,7 +19,6 @@ airtable_field_search_count = os.environ.get('AIRTABLE_FIELD_SEARCH_COUNT')
 telegram_apikey = os.environ.get('TELEGRAM_APIKEY')
 telegram_chatid = os.environ.get('TELEGRAM_CHATID')
 
-xpath_selector = os.environ.get('XPATH_SELECTOR')
 search_term = os.environ.get('SEARCH_TERM')
 
 # Load all modules
@@ -102,7 +101,7 @@ inputdata = getrecords.getcleandata(airtable_apikey, airtable_base,
 # to the record
 print('\nChecking each URL for no. of times', '"'+search_term+'"',
 'appears and appending to each record...\n')
-termcount = checkhtml.checkforterm(inputdata,xpath_selector,search_term)
+termcount = checkhtml.checkforterm(inputdata,search_term)
 
 
 # Runs the compare records function taking the two arguments

@@ -16,7 +16,7 @@ options.add_argument('--ignore-certificate-errors')
 # downloaded & installed via webdriver manager
 browser = webdriver.Chrome(ChromeDriverManager().install())
 
-def checkforterm(records,xpath_selector,search_term):
+def checkforterm(records,search_term):
     data = []
     
     for record in records:
@@ -36,7 +36,7 @@ def checkforterm(records,xpath_selector,search_term):
         browser.get(record_joburl)
         time.sleep(1)
         elements = browser.find_elements_by_xpath(
-            xpath_selector % search_term)
+            '//*[text()[contains(., "%s")]]' % search_term)
 
         if not elements:
             print('Jobs page for co.', record_coname, 

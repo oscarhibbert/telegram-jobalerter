@@ -54,14 +54,7 @@ TELEGRAM_APIKEY = ''
 TELEGRAM_CHATID = ''
 
 
-# 3. Xpath configuration
-# the xpath selector to look for the search term
-# xpath must include the s% operator which will replace 
-# with SEARCH_TERM when the application runs e.g.
-# '//*[text()[contains(.,"%s")]]'
-XPATH_SELECTOR = ''
-
-# Search term for xpath locator
+# 3. Job vacancy search term e.g. 'Product Manager'
 SEARCH_TERM = ''
 ```
 
