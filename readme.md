@@ -1,6 +1,6 @@
 # Telegram Job Alerter
 
-A headless application written in Python that regularly monitors for new job vacancies added to a company’s careers page based on a specific search term. 
+A Python application that regularly monitors for new job vacancies added to a company’s careers page based on a specific search term. 
 
 Company careers page URLs to monitor are managed in Airtable & checked by the application.
 

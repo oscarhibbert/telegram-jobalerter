@@ -4,12 +4,14 @@ import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
-
+hm = True
 # Chrome webdriver SSL disabling options
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certificate-errors')
-# options.add_argument('--headless')
+
+# if hm == True:
+# options.add_argument('--headless')  
 # options.add_argument('--disable-gpu')
 
 # Browser variable setting the browser driver
