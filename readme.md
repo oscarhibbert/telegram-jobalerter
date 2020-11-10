@@ -66,7 +66,7 @@ From the app directory ```$ pipenv run python3 jobalerter.py```
 
 ## Limitations
 
-* No handling for pages which have CAPATCHA walls.
+* No handling for job vacancy pages which have CAPATCHA walls.
 
 * Currently limited to monitoring a maximum of 10 Airtable records.
 
