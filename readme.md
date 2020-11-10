@@ -1,4 +1,4 @@
-# Job Alerter App
+# Telegram Job Alerter
 
 A headless application written in Python that regularly monitors for new job vacancies added to a company’s careers page based on a specific search term. 
 
@@ -12,9 +12,9 @@ The application then sends an alert for any new vacancies to a private Telegram 
 
 This application is tested with Python 3.7.
 
-1. Using git ``` $ git clone https://github.com/oscarhibbert/jobalerter-app```
+1. Using git ``` $ git clone https://github.com/oscarhibbert/telegram-jobalerter```
 
-2. Navigate to the app directory ```$ cd jobalerter-app```
+2. Navigate to the app directory ```$ cd telegram-jobalerter```
 
 3. Install all dependencies using pipenv ```$ cd pipenv install```
 
@@ -68,7 +68,7 @@ SEARCH_TERM = ''
 
 ## Running the Application
 
-From the app directory ```$ pipenv run python3 jobchecker.py```
+From the app directory ```$ pipenv run python3 jobalerter.py```
 
 
 ## Limitations

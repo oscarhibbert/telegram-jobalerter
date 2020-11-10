@@ -8,7 +8,7 @@ def patch(apikey,base,table,thedata):
         'Content-Type': 'application/json'
     }
 
-    # Data layout for input from the compare records function in jobchecker.py
+    # Data layout for input from the compare records function in jobalerter.py
     data = {
         "records": thedata
     }
