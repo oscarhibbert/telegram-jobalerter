@@ -16,7 +16,7 @@ This application is tested with Python 3.7.
 
 2. Navigate to the app directory ```$ cd telegram-jobalerter```
 
-3. Install all dependencies using pipenv ```$ cd pipenv install```
+3. Install all dependencies using pipenv ```$ pipenv install```
 
 
 ## Configuration
